@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Epsity | Welcome!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load staticfiles %}
+
+  {% include 'dependencies-1.html' %}
+
+  <link rel="stylesheet" type="text/css" href="/static/css/grand.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/profile.css">
+  <link rel="icon" size="20x20" href="/static/img/logo-2.png"/>
+  <script src="/static/js/grand.js"></script>
+
+  {% if you != None %}
+  <script src="/static/js/profile.js"></script>
+  <script src="/static/js/controllers/profile-main-ctrl.js"></script>
+  {% else %}
+  <link rel="stylesheet" type="text/css" href="/static/css/welcome.css">
+  <script src="/static/js/welcome.js"></script>
+  {% endif %}
+</head>
+
+  <body style="background: #fbfbfb;" ng-app="epsityApp" ng-controller="welcomeCtrl" class="transition">
+
+    <!-- <img style="margin-top: 20px;" class="middlr transition" src="/static/img/logo-2.png"/>
+    <h3 class="text-center"><strong>Epsity</strong></h3>
+    <p class="text-center"></p>
+    <hr style="border-color: grey;">
+    <br> -->
+
+    {% if you != None %}
+      {% include 'topbar-1.html' %}
+    {% else %}
+      {% include 'topbar-2.html' %}
+    {% endif %}
+
+    <h2 class="text-center no-marg" style="padding-top: 45vh;"><strong>Error:</strong></h2>
+    <h4 class="text-center">{{ errorMessage }}</h4>
+
+    <br>
+
+    <ul class="ul-raw text-center">
+      <li><a title="Home Page" href="/"></a></li>
+      <li><a title="Login Page" href="/login"></a></li>
+      <li><a title="Signup Page" href="/signup"></a></li>
+    </ul>
+
+    <script>
+      $(document).ready(function(){
+        location.href += '#{{ value }}'
+      });
+    </script>
+
+  </body>
+
+  <!--
+
+    wp = Welcome Page
+
+  -->
+
+</html>
